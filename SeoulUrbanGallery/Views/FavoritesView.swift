@@ -9,10 +9,11 @@ import SwiftUI
 
 struct FavoritesView: View {
     @EnvironmentObject private var favoritesManager: FavoritesManager
+    @State private var searchText = ""
     var body: some View {
         NavigationView {
             List {
-                ForEach(favoritesManager.favorites) { favorite in
+                ForEach(favoritesManager.searchedFavorites(with: searchText)) { favorite in
                     NavigationLink {
                         UrbanGalleryDetailView(urbanGallery: favorite)
                     } label: {
@@ -21,7 +22,9 @@ struct FavoritesView: View {
                 }
                 .onDelete(perform: favoritesManager.delete)
             }
-            .navigationTitle("즐겨찾기 (\(favoritesManager.favorites.count))")
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .autocorrectionDisabled()
+            .navigationTitle("즐겨찾기 (\(favoritesManager.searchedFavorites(with: searchText).count))")
         }
         .navigationViewStyle(.stack)
     }

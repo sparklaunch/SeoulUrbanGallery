@@ -24,7 +24,7 @@ import SwiftUI
     init() {
         loadData()
     }
-    func loadData() {
+    private func loadData() {
         if let data = try? Data(contentsOf: targetURL) {
             guard let decodedData = try? JSONDecoder().decode([UrbanGallery].self, from: data) else {
                 fatalError("Failed to decode data.")
@@ -34,7 +34,7 @@ import SwiftUI
             favorites = []
         }
     }
-    func saveData() {
+    private func saveData() {
         guard let encodedData = try? JSONEncoder().encode(favorites) else {
             fatalError("Failed to encode data.")
         }
@@ -60,5 +60,14 @@ import SwiftUI
     func delete(at offsets: IndexSet) {
         favorites.remove(atOffsets: offsets)
         saveData()
+    }
+    func searchedFavorites(with searchText: String) -> [UrbanGallery] {
+        if searchText.isEmpty {
+            return favorites
+        } else {
+            return favorites.filter { favorite in
+                favorite.title.localizedCaseInsensitiveContains(searchText)
+            }
+        }
     }
 }
