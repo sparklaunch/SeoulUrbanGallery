@@ -11,12 +11,15 @@ struct FavoritesView: View {
     @EnvironmentObject private var favoritesManager: FavoritesManager
     var body: some View {
         NavigationView {
-            List(favoritesManager.favorites) { favorite in
-                NavigationLink {
-                    UrbanGalleryDetailView(urbanGallery: favorite)
-                } label: {
-                    UrbanGalleryRow(urbanGallery: favorite)
+            List {
+                ForEach(favoritesManager.favorites) { favorite in
+                    NavigationLink {
+                        UrbanGalleryDetailView(urbanGallery: favorite)
+                    } label: {
+                        UrbanGalleryRow(urbanGallery: favorite)
+                    }
                 }
+                .onDelete(perform: favoritesManager.delete)
             }
             .navigationTitle("즐겨찾기 (\(favoritesManager.favorites.count))")
         }
