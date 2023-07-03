@@ -80,6 +80,9 @@ struct UrbanGallery: Codable {
     let detailedLocation: String
     let detail: String
     let classification: String
+    var imageName: String {
+        title.capitalized.replacingOccurrences(of: " ", with: "")
+    }
 }
 
 extension UrbanGallery {

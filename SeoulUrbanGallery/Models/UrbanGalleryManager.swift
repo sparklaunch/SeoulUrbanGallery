@@ -32,4 +32,13 @@ import SwiftUI
         urbanGallery = decodedData.header.rows
         count = decodedData.header.count
     }
+    func searchedUrbanGallery(with searchText: String) -> [UrbanGallery] {
+        if searchText.isEmpty {
+            return urbanGallery
+        } else {
+            return urbanGallery.filter { urbanGallery in
+                urbanGallery.title.localizedCaseInsensitiveContains(searchText)
+            }
+        }
+    }
 }
