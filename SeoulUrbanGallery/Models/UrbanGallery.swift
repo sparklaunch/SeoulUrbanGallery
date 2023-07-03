@@ -81,7 +81,7 @@ struct UrbanGallery: Codable {
     let detail: String
     let classification: String
     var imageName: String {
-        title.capitalized.replacingOccurrences(of: " ", with: "")
+        title.capitalized.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "!", with: "")
     }
 }
 
