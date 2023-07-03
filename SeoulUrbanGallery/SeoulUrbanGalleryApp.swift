@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct SeoulUrbanGalleryApp: App {
+    @StateObject private var urbanGalleryManager = UrbanGalleryManager()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(urbanGalleryManager)
         }
     }
 }
