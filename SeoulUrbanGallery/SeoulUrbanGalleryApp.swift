@@ -10,10 +10,12 @@ import SwiftUI
 @main
 struct SeoulUrbanGalleryApp: App {
     @StateObject private var urbanGalleryManager = UrbanGalleryManager()
+    @StateObject private var favoritesManager = FavoritesManager()
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(urbanGalleryManager)
+                .environmentObject(favoritesManager)
         }
     }
 }

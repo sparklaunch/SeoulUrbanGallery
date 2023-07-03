@@ -8,13 +8,25 @@
 import SwiftUI
 
 struct FavoritesView: View {
+    @EnvironmentObject private var favoritesManager: FavoritesManager
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List(favoritesManager.favorites) { favorite in
+                NavigationLink {
+                    UrbanGalleryDetailView(urbanGallery: favorite)
+                } label: {
+                    UrbanGalleryRow(urbanGallery: favorite)
+                }
+            }
+            .navigationTitle("즐겨찾기 (\(favoritesManager.favorites.count))")
+        }
+        .navigationViewStyle(.stack)
     }
 }
 
 struct FavoritesView_Previews: PreviewProvider {
     static var previews: some View {
         FavoritesView()
+            .environmentObject(FavoritesManager())
     }
 }

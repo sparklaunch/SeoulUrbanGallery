@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct UrbanGalleryDetailView: View {
+    @EnvironmentObject private var favoritesManager: FavoritesManager
     let urbanGallery: UrbanGallery
     var body: some View {
         ScrollView {
@@ -23,8 +24,26 @@ struct UrbanGalleryDetailView: View {
                         }
                     }
                 VStack(alignment: .leading, spacing: 10) {
-                    Text(urbanGallery.title)
-                        .font(.largeTitle.bold())
+                    HStack {
+                        Text(urbanGallery.title)
+                            .font(.largeTitle.bold())
+                        Spacer()
+                        if favoritesManager.has(urbanGallery) {
+                            Button {
+                                favoritesManager.remove(urbanGallery)
+                            } label: {
+                                Image(systemName: "star.fill")
+                                    .imageScale(.large)
+                            }
+                        } else {
+                            Button {
+                                favoritesManager.add(urbanGallery)
+                            } label: {
+                                Image(systemName: "star")
+                                    .imageScale(.large)
+                            }
+                        }
+                    }
                     Text("**소재지**: \(urbanGallery.location), \(urbanGallery.detailedLocation).")
                     Text("**설치 연도**: \(urbanGallery.yearInstalled).")
                     Text("**유형**: \(urbanGallery.classification).")
@@ -43,5 +62,6 @@ struct UrbanGalleryDetailView: View {
 struct UrbanGalleryDetailView_Previews: PreviewProvider {
     static var previews: some View {
         UrbanGalleryDetailView(urbanGallery: UrbanGallery.example)
+            .environmentObject(FavoritesManager())
     }
 }

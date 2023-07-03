@@ -18,6 +18,7 @@
 		90DB5E892A528CF00086C8C7 /* UrbanGalleryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB5E882A528CF00086C8C7 /* UrbanGalleryRow.swift */; };
 		90DB5E8B2A528E270086C8C7 /* UrbanGalleryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB5E8A2A528E270086C8C7 /* UrbanGalleryDetailView.swift */; };
 		90DB5E8D2A5294EE0086C8C7 /* PhotoLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB5E8C2A5294EE0086C8C7 /* PhotoLibraryManager.swift */; };
+		90DB5E8F2A5296780086C8C7 /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB5E8E2A5296780086C8C7 /* FavoritesManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		90DB5E882A528CF00086C8C7 /* UrbanGalleryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanGalleryRow.swift; sourceTree = "<group>"; };
 		90DB5E8A2A528E270086C8C7 /* UrbanGalleryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanGalleryDetailView.swift; sourceTree = "<group>"; };
 		90DB5E8C2A5294EE0086C8C7 /* PhotoLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryManager.swift; sourceTree = "<group>"; };
+		90DB5E8E2A5296780086C8C7 /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				90DB5E7F2A5285550086C8C7 /* UrbanGalleryManager.swift */,
 				90DB5E822A5286F70086C8C7 /* UrbanGallery.swift */,
 				90DB5E8C2A5294EE0086C8C7 /* PhotoLibraryManager.swift */,
+				90DB5E8E2A5296780086C8C7 /* FavoritesManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90DB5E712A5284780086C8C7 /* ContentView.swift in Sources */,
+				90DB5E8F2A5296780086C8C7 /* FavoritesManager.swift in Sources */,
 				90DB5E832A5286F70086C8C7 /* UrbanGallery.swift in Sources */,
 				90DB5E872A528B3B0086C8C7 /* FavoritesView.swift in Sources */,
 				90DB5E892A528CF00086C8C7 /* UrbanGalleryRow.swift in Sources */,
