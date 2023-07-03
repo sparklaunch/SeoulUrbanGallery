@@ -15,6 +15,13 @@ struct UrbanGalleryDetailView: View {
                 Image(urbanGallery.imageName)
                     .resizable()
                     .scaledToFit()
+                    .contextMenu {
+                        Button {
+                            PhotoLibraryManager.saveToPhotoLibrary(urbanGallery.imageName)
+                        } label: {
+                            Label("이미지 저장", systemImage: "photo")
+                        }
+                    }
                 VStack(alignment: .leading, spacing: 10) {
                     Text(urbanGallery.title)
                         .font(.largeTitle.bold())

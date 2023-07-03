@@ -17,6 +17,7 @@
 		90DB5E872A528B3B0086C8C7 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB5E862A528B3B0086C8C7 /* FavoritesView.swift */; };
 		90DB5E892A528CF00086C8C7 /* UrbanGalleryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB5E882A528CF00086C8C7 /* UrbanGalleryRow.swift */; };
 		90DB5E8B2A528E270086C8C7 /* UrbanGalleryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB5E8A2A528E270086C8C7 /* UrbanGalleryDetailView.swift */; };
+		90DB5E8D2A5294EE0086C8C7 /* PhotoLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB5E8C2A5294EE0086C8C7 /* PhotoLibraryManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		90DB5E862A528B3B0086C8C7 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		90DB5E882A528CF00086C8C7 /* UrbanGalleryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanGalleryRow.swift; sourceTree = "<group>"; };
 		90DB5E8A2A528E270086C8C7 /* UrbanGalleryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanGalleryDetailView.swift; sourceTree = "<group>"; };
+		90DB5E8C2A5294EE0086C8C7 /* PhotoLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				90DB5E7F2A5285550086C8C7 /* UrbanGalleryManager.swift */,
 				90DB5E822A5286F70086C8C7 /* UrbanGallery.swift */,
+				90DB5E8C2A5294EE0086C8C7 /* PhotoLibraryManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				90DB5E872A528B3B0086C8C7 /* FavoritesView.swift in Sources */,
 				90DB5E892A528CF00086C8C7 /* UrbanGalleryRow.swift in Sources */,
 				90DB5E6F2A5284780086C8C7 /* SeoulUrbanGalleryApp.swift in Sources */,
+				90DB5E8D2A5294EE0086C8C7 /* PhotoLibraryManager.swift in Sources */,
 				90DB5E8B2A528E270086C8C7 /* UrbanGalleryDetailView.swift in Sources */,
 				90DB5E852A528B280086C8C7 /* MainView.swift in Sources */,
 				90DB5E802A5285550086C8C7 /* UrbanGalleryManager.swift in Sources */,
@@ -312,6 +316,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeoulUrbanGallery/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "이미지를 저장하기 위해 사진 앨범에 대한 권한이 필요합니다.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -353,6 +358,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeoulUrbanGallery/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "이미지를 저장하기 위해 사진 앨범에 대한 권한이 필요합니다.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
