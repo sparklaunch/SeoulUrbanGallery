@@ -12,31 +12,67 @@ import SwiftUI
     @Published var location = ""
     @Published var yearInstalled = 2023
     @Published var classification = ""
-    func makeUrbanGallery(imageData: Data) throws -> UrbanGallery {
-        let genuineTitle: String
+    @Published var institute = ""
+    @Published var institute2 = ""
+    @Published var institute3 = ""
+    @Published var detailedLocation = ""
+    @Published var detail = ""
+    private var genuineTitle: String {
         if title.isEmpty {
-            genuineTitle = "무제"
+            return "무제"
         } else {
-            genuineTitle = title
+            return title
         }
-        let genuineLocation: String
+    }
+    private var genuineLocation: String {
         if location.isEmpty {
-            genuineLocation = "불명"
+            return "불명"
         } else {
-            genuineLocation = location
+            return location
         }
-        let genuineClassification: String
+    }
+    private var genuineClassification: String {
         if classification.isEmpty {
-            genuineClassification = "기타"
+            return "기타"
         } else {
-            genuineClassification = classification
+            return classification
         }
+    }
+    private var genuineInstitute: String {
+        if institute.isEmpty {
+            return "기관 정보 없음"
+        } else {
+            return institute
+        }
+    }
+    private var genuineInstitute2: String {
+        if institute2.isEmpty {
+            return "기관 정보 없음"
+        } else {
+            return institute2
+        }
+    }
+    private var genuineInstitute3: String {
+        if institute3.isEmpty {
+            return "기관 정보 없음"
+        } else {
+            return institute3
+        }
+    }
+    private var genuineDetailedLocation: String {
+        if detailedLocation.isEmpty {
+            return "상세 주소 정보 없음"
+        } else {
+            return detailedLocation
+        }
+    }
+    func makeUrbanGallery(imageData: Data) throws -> UrbanGallery {
         let id = UUID().uuidString
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let targetURL = documentDirectory.appendingPathComponent(id)
         do {
             try imageData.write(to: targetURL, options: [.atomic, .completeFileProtection])
-            return UrbanGallery(title: genuineTitle, yearInstalled: String(yearInstalled), institute: "", institute2: "", institute3: "", location: genuineLocation, detailedLocation: "", detail: "", classification: genuineClassification, isCustom: true, customImageURL: targetURL)
+            return UrbanGallery(title: genuineTitle, yearInstalled: String(yearInstalled), institute: genuineInstitute, institute2: genuineInstitute2, institute3: genuineInstitute3, location: genuineLocation, detailedLocation: genuineDetailedLocation, detail: detail, classification: genuineClassification, isCustom: true, customImageURL: targetURL)
         } catch {
             fatalError(error.localizedDescription)
         }
