@@ -80,6 +80,8 @@ struct UrbanGallery: Codable {
     let detailedLocation: String
     let detail: String
     let classification: String
+    var isCustom = false
+    var customImageURL: URL?
     var imageName: String {
         title.capitalized.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "!", with: "")
     }

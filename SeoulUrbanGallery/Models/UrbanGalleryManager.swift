@@ -41,4 +41,7 @@ import SwiftUI
             }
         }
     }
+    func add(_ customUrbanGallery: UrbanGallery) {
+        urbanGallery.append(customUrbanGallery)
+    }
 }

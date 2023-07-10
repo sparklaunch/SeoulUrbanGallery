@@ -15,6 +15,7 @@ import SwiftUI
                 guard let data = try? await item?.loadTransferable(type: Data.self) else {
                     fatalError("Failed to load transferable.")
                 }
+                imageData = data
                 guard let uiImage = UIImage(data: data) else {
                     fatalError("Failed to convert image.")
                 }
@@ -23,4 +24,5 @@ import SwiftUI
         }
     }
     @Published var image: Image?
+    var imageData: Data?
 }

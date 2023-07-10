@@ -10,10 +10,29 @@ import SwiftUI
 struct UrbanGalleryDetailView: View {
     @EnvironmentObject private var favoritesManager: FavoritesManager
     let urbanGallery: UrbanGallery
+    private var customImage: Image {
+        guard let targetURL = urbanGallery.customImageURL else {
+            fatalError("Failed to load custom image")
+        }
+        guard let imageData = try? Data(contentsOf: targetURL) else {
+            fatalError("Failed to load custom image data")
+        }
+        guard let uiImage = UIImage(data: imageData) else {
+            fatalError("Failed to convert data to image")
+        }
+        return Image(uiImage: uiImage)
+    }
+    private var image: Image {
+        if urbanGallery.isCustom {
+            return customImage
+        } else {
+            return Image(urbanGallery.imageName)
+        }
+    }
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                Image(urbanGallery.imageName)
+                image
                     .resizable()
                     .scaledToFit()
                     .contextMenu {
