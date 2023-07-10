@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     @EnvironmentObject private var urbanGalleryManager: UrbanGalleryManager
     @State private var searchText = ""
+    @State private var showingCreateSheet = false
     var body: some View {
         NavigationView {
             List(urbanGalleryManager.searchedUrbanGallery(with: searchText)) { urbanGallery in
@@ -22,6 +23,18 @@ struct MainView: View {
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .autocorrectionDisabled()
             .navigationTitle("갤러리 (\(urbanGalleryManager.count))")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showingCreateSheet = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
+            .sheet(isPresented: $showingCreateSheet) {
+                CreateSheet()
+            }
         }
         .navigationViewStyle(.stack)
     }
