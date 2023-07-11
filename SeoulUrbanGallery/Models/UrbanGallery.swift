@@ -113,6 +113,7 @@ extension UrbanGallery: Identifiable {
         var hasher = Hasher()
         hasher.combine(title)
         hasher.combine(location)
+        hasher.combine(customImageURL)
         return hasher.finalize()
     }
 }
