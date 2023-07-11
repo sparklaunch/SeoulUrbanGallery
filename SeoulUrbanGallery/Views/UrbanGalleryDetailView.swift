@@ -11,16 +11,21 @@ struct UrbanGalleryDetailView: View {
     @EnvironmentObject private var favoritesManager: FavoritesManager
     let urbanGallery: UrbanGallery
     private var customImage: Image {
-        guard let targetURL = urbanGallery.customImageURL else {
+        guard let targetFileName = urbanGallery.customImageFileName else {
             fatalError("Failed to load custom image")
         }
-        guard let imageData = try? Data(contentsOf: targetURL) else {
-            fatalError("Failed to load custom image data")
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let targetURL = documentDirectory.appendingPathComponent(targetFileName)
+        do {
+            let imageData = try Data(contentsOf: targetURL)
+            guard let uiImage = UIImage(data: imageData) else {
+                fatalError("Failed to convert data to image")
+            }
+            return Image(uiImage: uiImage)
+        } catch {
+            print(error.localizedDescription)
+            return Image(uiImage: UIImage())
         }
-        guard let uiImage = UIImage(data: imageData) else {
-            fatalError("Failed to convert data to image")
-        }
-        return Image(uiImage: uiImage)
     }
     private var image: Image {
         if urbanGallery.isCustom {

@@ -22,6 +22,7 @@
 		90DB5E912A5BAE850086C8C7 /* CreateSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB5E902A5BAE850086C8C7 /* CreateSheet.swift */; };
 		90DB5E932A5BB48C0086C8C7 /* PhotosPickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB5E922A5BB48C0086C8C7 /* PhotosPickerManager.swift */; };
 		90DB5E952A5BECCF0086C8C7 /* CustomGalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB5E942A5BECCF0086C8C7 /* CustomGalleryManager.swift */; };
+		90DB5E972A5D3DFF0086C8C7 /* CustomUrbanGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DB5E962A5D3DFF0086C8C7 /* CustomUrbanGallery.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		90DB5E902A5BAE850086C8C7 /* CreateSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSheet.swift; sourceTree = "<group>"; };
 		90DB5E922A5BB48C0086C8C7 /* PhotosPickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPickerManager.swift; sourceTree = "<group>"; };
 		90DB5E942A5BECCF0086C8C7 /* CustomGalleryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGalleryManager.swift; sourceTree = "<group>"; };
+		90DB5E962A5D3DFF0086C8C7 /* CustomUrbanGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUrbanGallery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				90DB5E8E2A5296780086C8C7 /* FavoritesManager.swift */,
 				90DB5E922A5BB48C0086C8C7 /* PhotosPickerManager.swift */,
 				90DB5E942A5BECCF0086C8C7 /* CustomGalleryManager.swift */,
+				90DB5E962A5D3DFF0086C8C7 /* CustomUrbanGallery.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90DB5E972A5D3DFF0086C8C7 /* CustomUrbanGallery.swift in Sources */,
 				90DB5E712A5284780086C8C7 /* ContentView.swift in Sources */,
 				90DB5E8F2A5296780086C8C7 /* FavoritesManager.swift in Sources */,
 				90DB5E932A5BB48C0086C8C7 /* PhotosPickerManager.swift in Sources */,

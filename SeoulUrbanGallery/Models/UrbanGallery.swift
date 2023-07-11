@@ -81,7 +81,7 @@ struct UrbanGallery: Codable {
     let detail: String
     let classification: String
     var isCustom = false
-    var customImageURL: URL?
+    var customImageFileName: String?
     var imageName: String {
         title.capitalized.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "!", with: "")
     }
@@ -113,7 +113,7 @@ extension UrbanGallery: Identifiable {
         var hasher = Hasher()
         hasher.combine(title)
         hasher.combine(location)
-        hasher.combine(customImageURL)
+        hasher.combine(customImageFileName)
         return hasher.finalize()
     }
 }

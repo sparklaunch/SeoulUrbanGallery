@@ -45,10 +45,10 @@ import SwiftUI
             guard let data = try? Data(contentsOf: url) else {
                 fatalError("Failed to load custom data.")
             }
-            guard let decodedData = try? JSONDecoder().decode(UrbanGallery.self, from: data) else {
+            guard let decodedData = try? JSONDecoder().decode(CustomUrbanGallery.self, from: data) else {
                 fatalError("Failed to decode custom data.")
             }
-            customUrbanGallery.append(decodedData)
+            customUrbanGallery.append(decodedData.toUrbanGallery())
         }
         return customUrbanGallery
     }
@@ -79,7 +79,8 @@ import SwiftUI
     private func save(_ customUrbanGallery: UrbanGallery) {
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let targetURL = documentDirectory.appendingPathComponent("Custom/\(customUrbanGallery.id)")
-        guard let encodedUrbanGallery = try? JSONEncoder().encode(customUrbanGallery) else {
+        let custom = CustomUrbanGallery(from: customUrbanGallery)
+        guard let encodedUrbanGallery = try? JSONEncoder().encode(custom) else {
             fatalError("Failed to encode custom urban gallery.")
         }
         try? encodedUrbanGallery.write(to: targetURL, options: [.atomic, .completeFileProtection])

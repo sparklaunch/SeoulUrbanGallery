@@ -72,7 +72,7 @@ import SwiftUI
         let targetURL = documentDirectory.appendingPathComponent(id)
         do {
             try imageData.write(to: targetURL, options: [.atomic, .completeFileProtection])
-            return UrbanGallery(title: genuineTitle, yearInstalled: String(yearInstalled), institute: genuineInstitute, institute2: genuineInstitute2, institute3: genuineInstitute3, location: genuineLocation, detailedLocation: genuineDetailedLocation, detail: detail, classification: genuineClassification, isCustom: true, customImageURL: targetURL)
+            return UrbanGallery(title: genuineTitle, yearInstalled: String(yearInstalled), institute: genuineInstitute, institute2: genuineInstitute2, institute3: genuineInstitute3, location: genuineLocation, detailedLocation: genuineDetailedLocation, detail: detail, classification: genuineClassification, isCustom: true, customImageFileName: id)
         } catch {
             fatalError(error.localizedDescription)
         }
