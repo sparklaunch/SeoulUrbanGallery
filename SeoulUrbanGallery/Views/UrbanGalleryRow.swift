@@ -10,7 +10,13 @@ import SwiftUI
 struct UrbanGalleryRow: View {
     let urbanGallery: UrbanGallery
     var body: some View {
-        Text(urbanGallery.title)
+        HStack {
+            Text(urbanGallery.title)
+            if urbanGallery.isCustom {
+                Spacer()
+                Image(systemName: "scale.3d")
+            }
+        }
     }
 }
 
