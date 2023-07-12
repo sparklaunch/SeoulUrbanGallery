@@ -85,6 +85,23 @@ struct UrbanGallery: Codable {
     var imageName: String {
         title.capitalized.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "!", with: "")
     }
+    var customImage: Image {
+        guard let targetFileName = customImageFileName else {
+            fatalError("Failed to load custom image")
+        }
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let targetURL = documentDirectory.appendingPathComponent(targetFileName)
+        do {
+            let imageData = try Data(contentsOf: targetURL)
+            guard let uiImage = UIImage(data: imageData) else {
+                fatalError("Failed to convert data to image")
+            }
+            return Image(uiImage: uiImage)
+        } catch {
+            print(error.localizedDescription)
+            return Image("LaunchScreen")
+        }
+    }
 }
 
 extension UrbanGallery {

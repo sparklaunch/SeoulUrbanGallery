@@ -9,6 +9,10 @@ import SwiftUI
 
 @MainActor class UrbanGalleryManager: ObservableObject {
     @Published private var _urbanGallery: [UrbanGallery] = []
+    private var customDirectory: URL {
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        return documentDirectory.appendingPathComponent("Custom")
+    }
     var count: Int = 0
     var urbanGallery: [UrbanGallery] {
         get {
@@ -23,8 +27,6 @@ import SwiftUI
         return URL(string: endPointString)!
     }
     private func makeCustomDirectory() {
-        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let customDirectory = documentDirectory.appendingPathComponent("Custom")
         if !FileManager.default.fileExists(atPath: customDirectory.path) {
             do {
                 try FileManager.default.createDirectory(atPath: customDirectory.path, withIntermediateDirectories: true)
@@ -34,8 +36,6 @@ import SwiftUI
         }
     }
     private func loadCustomData() -> [UrbanGallery] {
-        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let customDirectory = documentDirectory.appendingPathComponent("Custom")
         makeCustomDirectory()
         guard let customURLs = try? FileManager.default.contentsOfDirectory(at: customDirectory, includingPropertiesForKeys: nil) else {
             fatalError("Failed to load custom directory.")
@@ -61,7 +61,7 @@ import SwiftUI
         }
         let customs = loadCustomData()
         urbanGallery = decodedData.header.rows + customs
-        count = decodedData.header.count
+        count = decodedData.header.count + customs.count
     }
     func searchedUrbanGallery(with searchText: String) -> [UrbanGallery] {
         if searchText.isEmpty {
@@ -77,12 +77,15 @@ import SwiftUI
         urbanGallery.append(customUrbanGallery)
     }
     private func save(_ customUrbanGallery: UrbanGallery) {
-        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let targetURL = documentDirectory.appendingPathComponent("Custom/\(customUrbanGallery.id)")
+        let targetURL = customDirectory.appendingPathComponent(String(customUrbanGallery.id))
         let custom = CustomUrbanGallery(from: customUrbanGallery)
         guard let encodedUrbanGallery = try? JSONEncoder().encode(custom) else {
             fatalError("Failed to encode custom urban gallery.")
         }
-        try? encodedUrbanGallery.write(to: targetURL, options: [.atomic, .completeFileProtection])
+        do {
+            try encodedUrbanGallery.write(to: targetURL, options: [.atomic, .completeFileProtection])
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
